@@ -31,11 +31,7 @@ include './components/header.php' ?>
 
 <style>
     body {
+        overflow-x: hidden;
         height: 100vh;
-        width: 100vw;
-        overflow: hidden;
-    }
-    .container{
-        padding-left: 4px;
     }
 </style>

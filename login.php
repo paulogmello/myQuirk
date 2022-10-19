@@ -32,7 +32,7 @@ if (count($_POST) > 0) {
     }
 }
 ?>
-<div class="container h-100 d-flex justify-content-center align-items-center">
+<div class="container my-5 d-flex justify-content-center align-items-center">
     <div class="card mb-5">
         <div class="card-header bg-warning text-center h3 p-4"><b>Fazer Login</b></div>
         <div class="card-body">
@@ -79,9 +79,8 @@ include './components/footer.php';
 
 <style>
     body {
-        overflow: hidden;
-        height: 100vh;
-        width: 100vw;
+        overflow-x: hidden;
+        height: 100%;
         background-color: #610a97;
     }
 </style>
