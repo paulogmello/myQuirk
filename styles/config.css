@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap');
+
+body{
+    font-family: 'Roboto', sans-serif;
+    overflow: scroll;
+}
+
+.bg-orange{
+    background-color: orange !important;
+    color: orange;
+}
+
+.nav-item i {
+    font-size: 1.4em !important;
+    z-index: 1;
+}
+
+.list-group-item.active{
+    background-color: black;
+    border: black;
+}
+
+a{
+    color: orange;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navbar-nav{
+    color: white !important;
+    
+}
+
+#midorya{
+    bottom: 0;
+    z-index: 1 !important;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    display: none;
+}
+
+
+.nav-item:hover{
+    background-color: #DC3545;
+    border-radius: 5px;
+    color: white;
+}
