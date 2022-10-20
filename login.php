@@ -34,7 +34,7 @@ if (count($_POST) > 0) {
 ?>
 <div class="container my-5 d-flex justify-content-center align-items-center">
     <div class="card mb-5">
-        <div class="card-header bg-warning text-center h3 p-4"><b>Fazer Login</b></div>
+        <div class="card-header bg-warning text-center h3 p-4"><b><i class="fa-solid fa-right-to-bracket"></i> Fazer Login</b></div>
         <div class="card-body">
             <form method="POST" autocomplete="off">
                 <div class="mb-3">
@@ -45,14 +45,14 @@ if (count($_POST) > 0) {
                     <?php endforeach ?>
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Nome de Usuário</label>
+                    <label for="exampleInputEmail1" class="form-label"><i class="fa-solid fa-user"></i> Nome de Usuário</label>
                     <input type="text" class="form-control" id="exampleInputEmail1" name="login" value="<?= $user ?>" id="validationCustom03" required>
                     <div class="invalid-feedback">
                         É necessário um nome de usuário
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Senha</label>
+                    <label for="exampleInputPassword1" class="form-label"><i class="fa-solid fa-key"></i> Senha</label>
                     <input type="password" class="form-control" id="exampleInputPassword1" name="senha" value="<?= $pass ?>" id="validationCustom03" required>
                     <div class="invalid-feedback">
                         É necessário utilizar uma senha
@@ -60,8 +60,8 @@ if (count($_POST) > 0) {
                 </div>
                 <div class="row text-center">
                     <div class="col">
-                        <button type="submit" class="btn btn-primary">Entrar</button>
-                        <button type="reset" class="btn btn-danger">Cancelar</button>
+                        <button type="submit" class="btn btn-primary"><i class="fa-solid fa-right-to-bracket"></i> Entrar</button>
+                        <button type="reset" class="btn btn-danger"><i class="fa-solid fa-ban"></i> Cancelar</button>
                     </div>
                 </div>
             </form>
@@ -83,4 +83,7 @@ include './components/footer.php';
         height: 100%;
         background-color: #610a97;
     }
+    ::-webkit-scrollbar-thumb {
+    background: #610a97; 
+  }
 </style>

@@ -2,7 +2,6 @@
 
 body{
     font-family: 'Roboto', sans-serif;
-    overflow: scroll;
 }
 
 .bg-orange{
@@ -52,8 +51,9 @@ a{
 /* width */
 ::-webkit-scrollbar {
     width: 10px;
+    background-color: #1a2865;
   }
   /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #610a97; 
+    background: #ff7e00; 
   }

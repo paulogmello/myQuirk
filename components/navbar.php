@@ -1,4 +1,6 @@
-<?php session_start(); ?>
+<?php session_start();
+setlocale(LC_ALL, "pt-BR");
+?>
 <nav class="navbar navbar-expand-lg bg-warning sticky-top">
     <div class="container">
         <a class="navbar-brand d-flex justify-content-center align-items-center" href="#">
