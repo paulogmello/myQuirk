@@ -8,7 +8,7 @@ if (!isset($_SESSION['usuario'])) {
     header("Location: ./index.php");
 }
 // Excluir do BD
-if($_GET['excluir']){
+if ($_GET['excluir']) {
     $conn = novaConexao();
     $sql = "DELETE FROM quirk WHERE quirk_id = ?";
     $stmt = $conn->prepare($sql);
@@ -21,7 +21,7 @@ if (count($_POST) > 0) {
     $sql = "INSERT INTO quirk (quirk_name, quirk_desc, quirk_rank, quirk_img) VALUES (?, ?, ?, ?)";
     $conn = novaConexao();
     $stmt = $conn->prepare($sql);
-    if(trim($_FILES['quirk_img']['name'] === '')){
+    if (trim($_FILES['quirk_img']['name'] === '')) {
         $img = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTjQFnCgCjWHbgne4eqoITZGYQC03jSz3STeCO-sC7rkRVlaEGyjC-7gxmg4Uq5JW0zBQ&usqp=CAU";
     } else if ($_FILES && $_FILES['quirk_img']) {
         $pastaUpload = './assets/quirkimgs/';
@@ -29,7 +29,7 @@ if (count($_POST) > 0) {
         $tmp = $_FILES['quirk_img']['tmp_name'];
         $arquivo = $pastaUpload . $nomeArquivo;
         move_uploaded_file($tmp, $arquivo);
-        $img = $arquivo;  
+        $img = $arquivo;
     }
     $params = [
         $_POST['quirk_name'],
@@ -59,7 +59,7 @@ if ($result->num_rows > 0) {
 }
 
 ?>
-<div class="container mt-5">
+<div class="container mt-5" id="contapp">
     <div class="row ">
         <div class="col-4 position-fixed">
             <h2>Criar Quirk</h2>
@@ -96,62 +96,76 @@ if ($result->num_rows > 0) {
         </div>
         <div class="col offset-5">
             <h2>Quirks Cadastradas</h2>
-            <table class="table text-center">
-                <div class="thead">
-                    <tr>
-                        <th>Imagem</th>
-                        <th>Nome</th>
-                        <th>Descrição</th>
-                        <th>Rank</th>
-                        <th>Ação</th>
-                    </tr>
-                </div>
-                <div class="tbody">
-                    <?php foreach ($registros as $regs) : ?>
+            <div class="table-responsive">
+                <table class="table text-center table-striped table-bordered">
+                    <div class="thead">
                         <tr>
-                            <td>
-                                <img src="<?= $regs['quirk_img'] ?>" alt="" class="img-fluid quirk">
-                            </td>
-                            <td class="text-start">
-                                <?= $regs['quirk_name'] ?>
-                            </td>
-                            <td class="text-start">
-                                <?= $regs['quirk_desc'] ?>
-                            </td>
-                            <td>
-                                <?php
-                                $rank = $regs['quirk_rank'];
-                                switch ($rank):
-                                    case 1;
-                                        echo "Especial";
-                                        break;
-                                    case 2;
-                                        echo "Raro";
-                                        break;
-                                    case 3;
-                                        echo "Incomum";
-                                        break;
-                                    case 4;
-                                        echo "Comum";
-                                        break;
-                                endswitch;
-                                ?>
-                            </td>
-                            <td>
-                                <a href="?excluir=<?= $regs['quirk_id'] ?>">
-                                    <button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button></a>
-                                
-                            </td>
+                            <th>Imagem</th>
+                            <th>Nome</th>
+                            <th>Descrição</th>
+                            <th>Rank</th>
+                            <th>Ação</th>
                         </tr>
-                    <?php endforeach ?>
-                </div>
-            </table>
+                    </div>
+                    <div class="tbody">
+                        <?php foreach ($registros as $regs) : ?>
+                            <tr>
+                                <td>
+                                    <img src="<?= $regs['quirk_img'] ?>" alt="" class="img-fluid quirk">
+                                </td>
+                                <td class="text-start">
+                                    <?= $regs['quirk_name'] ?>
+                                </td>
+                                <td class="text-start">
+                                    <?= $regs['quirk_desc'] ?>
+                                </td>
+                                <td>
+                                    <?php
+                                    $rank = $regs['quirk_rank'];
+                                    switch ($rank):
+                                        case 1;
+                                            echo "Especial";
+                                            break;
+                                        case 2;
+                                            echo "Raro";
+                                            break;
+                                        case 3;
+                                            echo "Incomum";
+                                            break;
+                                        case 4;
+                                            echo "Comum";
+                                            break;
+                                    endswitch;
+                                    ?>
+                                </td>
+                                <td>
+                                    <a href="?excluir=<?= $regs['quirk_id'] ?>">
+                                        <button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button></a>
+
+                                </td>
+                            </tr>
+                        <?php endforeach ?>
+                    </div>
+                </table>
+            </div>
         </div>
     </div>
 </div>
 <?php
 include './components/footer.php';
 ?>
+<script>
+    // mobile
+
+    if ($(window).width() < 600) {
+        $(".col").attr('class', 'row');
+        $(".col-4").attr('class', 'row');
+        $(".row").attr('class', 'text-center');
+        $("#contapp").attr('class', 'm-3');
+
+
+    }
+</script>
 
 <style>
     body {

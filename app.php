@@ -59,28 +59,16 @@ $conn->close();
 <?php include './components/navbar.php' ?>
 
 <div class="container">
-    <div class="row mt-5">
-        <div class="col-5">
-            <h2><i class="fa-solid fa-gear"></i> Como funciona?</h2>
-            <p>Primeiramente, o programa irá girar um a <a href="#" data-bs-toggle="tooltip" data-bs-title="Um dado com 100 lados">d100</a> para decidir qual rank de individualidade você terá.<br> </p>
-            <ul class="list-group mb-3">
-                <li class="list-group-item" id="d1"><b>1 a 5</b> - Individualidades <b class="text-warning">Especiais</b></li>
-                <li class="list-group-item" id="d2"><b>6 a 20</b> - Individualidades <b class="text-success">Raras</b></li>
-                <li class="list-group-item" id="d3"><b>21 a 40</b> - Individualidades <b class="text-primary">Incomuns</b></li>
-                <li class="list-group-item" id="d4"><b>41 a 100</b> - Individualidades <b class="text-secondary">Comuns</b></li>
-            </ul>
-            <p>Após isso, o resultado irá decidir em qual tipo de individualidade você encaixa, e posteriormente irá mostrar qual individualidade você possui.</p>
-
-        </div>
-
-        <div class="col text-end ">
-            <h2 class="text-start"><i class="fa-solid fa-dna"></i> Descobrir minha Individualidade</h2>
-            <div class="row">
-                <div class="col text-end">
+    <div class="row mt-5" id="rowm">
+        <div class="col text-center" id="desktop">
+            <h2 class="text-center" id="text-title"><i class="fa-solid fa-dna"></i> Esta é a sua individualidade: </h2>
+            <div class="row d-flex align-items-center justify-content-center" id="rowind">
+                <a href="./app.php" class="btn btn-danger mb-3" id="descobrirbtn"><i class="fa-solid fa-dna"></i> Descobrir minha Individualidade</a>
+                <div class="col">
                     <img src="<?= $reg['quirk_img'] ?>" alt="" style="width: 20rem;">
                 </div>
-                <div class="col text-start ">
-                    <h3 style="color: orange;"><?= $reg['quirk_name'] ?></h3>
+                <div class="col text-start" id="nomeind">
+                    <h1 style="color: orange;"><?= $reg['quirk_name'] ?></h1>
                     <hr>
                     <p><?= $reg['quirk_desc'] ?></p>
                     Potência: <b class="text-danger"><?= $randomiz ?> </b>
@@ -94,6 +82,18 @@ $conn->close();
 
                 </div>
             </div>
+        </div>
+        <div class="col-5" id="comofunciona">
+            <h2 class="text-center"><i class="fa-solid fa-gear"></i> Como funciona?</h2>
+            <p>Primeiramente, o programa irá girar um a <a href="#" data-bs-toggle="tooltip" data-bs-title="Um dado com 100 lados">d100</a> para decidir qual rank de individualidade você terá.<br> </p>
+            <ul class="list-group mb-3 text-center">
+                <li class="list-group-item" id="d1"><b>1 a 5</b> - Individualidades <b class="text-warning">Especiais</b></li>
+                <li class="list-group-item" id="d2"><b>6 a 20</b> - Individualidades <b class="text-success">Raras</b></li>
+                <li class="list-group-item" id="d3"><b>21 a 40</b> - Individualidades <b class="text-primary">Incomuns</b></li>
+                <li class="list-group-item" id="d4"><b>41 a 100</b> - Individualidades <b class="text-secondary">Comuns</b></li>
+            </ul>
+            <p>Após isso, o resultado irá decidir em qual tipo de individualidade você encaixa, e posteriormente irá mostrar qual individualidade você possui.</p>
+
         </div>
     </div>
 </div>
@@ -111,5 +111,19 @@ $conn->close();
         $("#d2").addClass("active");
     } else if (verAtivo === "Especial") {
         $("#d1").addClass("active");
+    }
+
+    // mobile
+    $("#descobrirbtn").hide();
+
+    if ($(window).width() < 600) {
+        $("#descobrirbtn").show();
+        $("#rowm").attr('class', 'mt-4');
+        $("#text-title").hide();
+        $("#rowind").attr('class', 'text-center mb-3');
+        $("#nomeind").attr('class', 'text-center mt-3');
+        $("#desktop").attr('class', 'row text-center mx-2 mb-5')
+        $("#comofunciona").attr('class', 'row text-center mx-2 mb-5')
+
     }
 </script>

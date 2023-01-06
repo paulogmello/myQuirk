@@ -17,6 +17,9 @@
 <script>
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
     const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
-</script>
 
+    if($(window).width() < 600){
+        $(".navbar").css('text-align', 'center')
+    }
+</script>
 </html>

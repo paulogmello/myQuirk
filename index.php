@@ -10,15 +10,16 @@ include './components/header.php' ?>
                 <h1>Bem-Vindo futuro Herói ou Heroína!</h1>
                 <hr>
                 <h5 class="mt-2">Você gostaria de descobrir a sua <b>Individualidade</b>?<br>
-                Descubra qual seria seu poder se você fizesse parte do universo de Boku no Hero Academia
+                    Descubra qual seria seu poder se você fizesse parte do universo de Boku no Hero Academia
                 </h5>
                 <p style="color: red;">Este site é feito por fã, todos os direitos são reservados aos autores e desenvolvedores do anime</p>
                 <a href="app.php"><button class="btn btn-danger mt-4"><i class="fa-solid fa-dna"></i> Descobrir minha Individualidade</button></a>
             </div>
-            <div class="col">
-                <img src="./assets/midorya.png" class="img-fluid" alt="" id="midorya">
+            <div class="col" id="imgindex">
+                <!-- <img src="./assets/midorya.png" class="img-fluid" id="midorya" alt=""> -->
             </div>
         </div>
+     
     </div>
     </div>
 </section>
@@ -27,11 +28,17 @@ include './components/header.php' ?>
 
 <script>
     $("#home").addClass("active")
+    $("#midoryamob").hide();
+
+    if ($(window).width() < 600) {
+        $('#imgindex').hide();
+        $('.container').addClass('text-center');
+    }
 </script>
 
 <style>
     body {
-        overflow-x: hidden;
+        overflow: hidden;
         height: 100vh;
     }
 </style>
